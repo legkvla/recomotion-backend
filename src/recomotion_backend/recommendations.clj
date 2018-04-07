@@ -24,12 +24,19 @@
   )
 
 (defn recommendations [user-id]
-  (->> (impressions/lookup-impressions-per-user user-id)
-    (take 3)
-    (map #(impressions/lookup-impressions-per-content (:content-id %)))
-    flatten
-    (map #(impressions/lookup-impressions-per-user (:user-id %)))
-    flatten
-    (take 10)
+  (let [
+    user-impressions (impressions/lookup-impressions-per-user user-id)
+    user-content (into #{} (map #(:content-id %) user-impressions))
+    ]
+    (->> user-impressions
+      (take 3)
+      (map #(impressions/lookup-impressions-per-content (:content-id %)))
+      flatten
+      (filter #(not= (:user-id %) user-id))
+      (map #(impressions/lookup-impressions-per-user (:user-id %)))
+      flatten
+      (filter #(not (contains? user-content %)))
+      (take 10)
+      )
     )
   )
