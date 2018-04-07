@@ -20,8 +20,8 @@
     [org.clojure/tools.trace "0.7.9"]
     ]
 
+  :min-lein-version "2.5.0"
   :uberjar-name "recomotion-backend.jar"
   :main ^:skip-aot recomotion-backend.core
-  :target-path "target/%s"
   :profiles {:uberjar {:aot :all}}
   )
