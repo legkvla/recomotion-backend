@@ -1,6 +1,6 @@
 (ns recomotion-backend.storages.config
   (:require
-    [recomotion-backend.storages.events :refer [content-storage init-content]]
+    [recomotion-backend.storages.content :refer [content-storage init-content]]
     [recomotion-backend.storages.events :refer [events-storage init-events]]
     )
   )
