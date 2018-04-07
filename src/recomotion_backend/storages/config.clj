@@ -2,6 +2,7 @@
   (:require
     [recomotion-backend.storages.content :refer [content-storage init-content]]
     [recomotion-backend.storages.events :refer [events-storage init-events]]
+    [recomotion-backend.storages.impressions :refer [impressions-storage init-impressions]]
     )
   )
 

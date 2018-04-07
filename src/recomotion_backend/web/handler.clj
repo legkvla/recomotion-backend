@@ -19,7 +19,7 @@
   (context "/api" []
     (POST "/events" {:keys [body]}
       (do
-        (on-event
+        (recommendations/on-event
           (events/create-event
             (:content-id body)
             (:user-id body)

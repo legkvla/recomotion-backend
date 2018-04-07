@@ -14,6 +14,8 @@
   ;Issue if use keyword (str) didn't help somewhy
   (-> (mongo-repository mongo-db "events")
     (fk-index [:content-id :user-id] true)
+    (fk-index [:content-id] false)
+    (fk-index [:user-id] false)
     )
   )
 
@@ -21,6 +23,14 @@
   (first
     (find-all impressions-storage {:content-id content-id :user-id user-id} nil)
     )
+  )
+
+(defn lookup-impressions-per-user [user-id]
+  (find-all impressions-storage {:user-id user-id} (array-map :_id -1))
+  )
+
+(defn lookup-impressions-per-content [content-id]
+  (find-all impressions-storage {:content-id content-id} (array-map :_id -1))
   )
 
 (defn update-impression [content-id user-id score]

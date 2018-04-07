@@ -29,3 +29,10 @@
       }
     )
   )
+
+(defn lookup-events [content-id user-id]
+  (find-all events-storage
+    {:content-id content-id :user-id user-id}
+    (array-map :_id 1)
+    )
+  )
