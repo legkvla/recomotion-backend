@@ -32,9 +32,11 @@
   )
 
 (defn like [content-id]
+  (new-content content-id)
   (apply-change content-storage content-id :inc :like-count 1)
   )
 
 (defn dislike [content-id]
+  (new-content content-id)
   (apply-change content-storage content-id :inc :dislike-count 1)
   )

@@ -6,9 +6,12 @@
     [ring.util.response :refer
       [response status charset content-type set-cookie redirect]]
 
+    [recomotion-backend.web.middleware :refer [wrap-middleware]]
+
     [recomotion-backend.storages.content :as content]
     [recomotion-backend.storages.events :as events]
-    [recomotion-backend.web.middleware :refer [wrap-middleware]]
+
+    [recomotion-backend.recommendations :as recommendations]
     )
   )
 
@@ -16,14 +19,15 @@
   (context "/api" []
     (POST "/events" {:keys [body]}
       (do
-        (events/create-event
-          (:content-id body)
-          (:user-id body)
-          (:event-kind body)
-          (:facial-expression body)
-          (:time body)
+        (on-event
+          (events/create-event
+            (:content-id body)
+            (:user-id body)
+            (:event-kind body)
+            (:facial-expression body)
+            (:time body)
+            )
           )
-        (content/new-content (:content-id body))
         (response {:status :ok})
         )
       )
