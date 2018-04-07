@@ -5,7 +5,7 @@
     )
   )
 
-(defrecord Event [id content-id user-id event-kind time])
+(defrecord Event [id content-id user-id kind facial-expression time])
 
 (def ^:dynamic events-storage)
 
@@ -17,12 +17,13 @@
     )
   )
 
-(defn create-event [content-id user-id event-kind time]
+(defn create-event [content-id user-id event-kind facial-expression time]
   (save events-storage
     {
       :content-id content-id
       :user-id user-id
-      :event-kind event-kind
+      :kind event-kind
+      :facial-expression facial-expression
       :time time
       }
     )
