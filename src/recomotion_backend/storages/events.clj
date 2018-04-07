@@ -12,6 +12,7 @@
 (defn init-events [mongo-db]
   ;Issue if use keyword (str) didn't help somewhy
   (-> (mongo-repository mongo-db "events")
+    (fk-index [:content-id :user-id] false)
     (fk-index [:content-id] false)
     (fk-index [:user-id] false)
     )
