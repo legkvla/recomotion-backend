@@ -31,6 +31,15 @@
         (response {:status :ok})
         )
       )
+    (GET "/content/:content-id/events" {:keys [params]}
+      (events/lookup-events-per-content (:content-id params))
+      )
+    (GET "/users/:user-id/events" {:keys [params]}
+      (events/lookup-events-per-user (:user-id params))
+      )
+    (GET "/recommendations/:user-id" {:keys [params]}
+      (recommendations/recommendations (:user-id params))
+      )
     )
   )
 

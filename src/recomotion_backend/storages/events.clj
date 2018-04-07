@@ -36,3 +36,11 @@
     (array-map :_id 1)
     )
   )
+
+(defn lookup-events-per-user [user-id]
+  (find-all events-storage {:user-id user-id} (array-map :_id 1))
+  )
+
+(defn lookup-events-per-content [content-id]
+  (find-all events-storage {:content-id content-id} (array-map :_id 1))
+  )
