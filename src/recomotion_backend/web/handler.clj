@@ -20,6 +20,7 @@
           (:content-id body)
           (:user-id body)
           (:event-kind body)
+          (:facial-expression body)
           (:time body)
           )
         (content/new-content (:content-id body))
