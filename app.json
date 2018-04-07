@@ -1,0 +1,6 @@
+{
+  "name": "Recomotion backend",
+  "description": "Sample Clojure rest-api",
+  "image": "heroku/clojure",
+  "addons": [ "mongolab" ]
+}
