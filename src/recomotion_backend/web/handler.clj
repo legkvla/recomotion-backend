@@ -6,6 +6,7 @@
     [ring.util.response :refer
       [response status charset content-type set-cookie redirect]]
 
+    [recomotion-backend.storages.content :as content]
     [recomotion-backend.storages.events :as events]
     [recomotion-backend.web.middleware :refer [wrap-middleware]]
     )
@@ -21,6 +22,7 @@
           (:event-kind body)
           (:time body)
           )
+        (content/new-content (:content-id body))
         (response {:status :ok})
         )
       )

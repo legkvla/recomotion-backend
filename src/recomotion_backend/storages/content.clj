@@ -16,8 +16,19 @@
     )
   )
 
+(defn lookup-content [content-id]
+  (first
+    (find-all content-storage {:content-id content-id} nil)
+    )
+  )
+
 (defn new-content [content-id]
-  (save content-storage {:content-id content-id :like-count 0 :dislike-count 0})
+  (if-not (lookup-content content-id)
+    ;todo add try catch here
+    (save content-storage
+      {:content-id content-id :like-count 0 :dislike-count 0}
+      )
+    )
   )
 
 (defn like [content-id]
