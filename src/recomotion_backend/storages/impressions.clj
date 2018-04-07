@@ -26,11 +26,11 @@
   )
 
 (defn lookup-impressions-per-user [user-id]
-  (find-all impressions-storage {:user-id user-id} (array-map :_id -1))
+  (find-all impressions-storage {:user-id user-id} (array-map :score -1))
   )
 
 (defn lookup-impressions-per-content [content-id]
-  (find-all impressions-storage {:content-id content-id} (array-map :_id -1))
+  (find-all impressions-storage {:content-id content-id} (array-map :score -1))
   )
 
 (defn update-impression [content-id user-id score]
