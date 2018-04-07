@@ -12,7 +12,7 @@
 
 (defn init-impressions [mongo-db]
   ;Issue if use keyword (str) didn't help somewhy
-  (-> (mongo-repository mongo-db "events")
+  (-> (mongo-repository mongo-db "impressions")
     (fk-index [:content-id :user-id] true)
     (fk-index [:content-id] false)
     (fk-index [:user-id] false)
