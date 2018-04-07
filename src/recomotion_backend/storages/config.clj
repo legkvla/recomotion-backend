@@ -8,6 +8,7 @@
   (fn [& args]
     (binding [
       events-storage (init-events mongo-db)
+      content-storage (init-content mongo-db)
       ]
       (apply handler args)
       )
