@@ -62,7 +62,9 @@
   (sort-by #(:time %)
     (map
       #(reduce
-        (fn [t1 t2] (update t1 :score (fn [score] (+ (:score t2)))))
+        (fn [t1 t2] (update t1 :score (fn [score]
+          (-> score (+ (:score t2)) (/ 2))
+          )))
         (map (fn [event] {:time (:time event) :score (:score event)}) %)
         )
       (-> content-id lookup-events-per-content vals)
