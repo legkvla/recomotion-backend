@@ -5,7 +5,7 @@
     )
   )
 
-(defrecord Event [id content-id user-id kind facial-expression time])
+(defrecord Event [id content-id user-id kind facial-expression score time])
 
 (def ^:dynamic events-storage)
 
@@ -18,6 +18,15 @@
     )
   )
 
+(defn calc-score [facial-expression]
+  (-> (:mouthSmile_L facial-expression)
+    (+ (:mouthSmile_R facial-expression))
+    (/ 2)
+    (* 100)
+    int
+    )
+  )
+
 (defn create-event [content-id user-id event-kind facial-expression time]
   (save events-storage
     {
@@ -25,6 +34,7 @@
       :user-id user-id
       :kind event-kind
       :facial-expression facial-expression
+      :score (calc-score facial-expression)
       :time time
       }
     )
