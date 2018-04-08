@@ -35,6 +35,9 @@
     (GET "/content/:content-id/events" {:keys [params]}
       (events/lookup-events-per-content (:content-id params))
       )
+    (GET "/content/:content-id/stats" {:keys [params]}
+      (events/timeline-for-content (:content-id params))
+      )
     (GET "/users/:user-id/events" {:keys [params]}
       (events/lookup-events-per-user (:user-id params))
       )
