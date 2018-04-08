@@ -59,11 +59,13 @@
   )
 
 (defn timeline-for-content [content-id]
-  (map
-    #(reduce
-      (fn [t1 t2] (update t1 :score (fn [score] (+ (:score t2)))))
-      (map (fn [event] {:time (:time event) :score (:score event)}) %)
+  (sort-by #(:time %)
+    (map
+      #(reduce
+        (fn [t1 t2] (update t1 :score (fn [score] (+ (:score t2)))))
+        (map (fn [event] {:time (:time event) :score (:score event)}) %)
+        )
+      (-> content-id lookup-events-per-content vals)
       )
-    (-> content-id lookup-events-per-content vals)
     )
   )
