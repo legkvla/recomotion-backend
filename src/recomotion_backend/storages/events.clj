@@ -33,7 +33,7 @@
       :content-id content-id
       :user-id user-id
       :kind event-kind
-      :facial-expression facial-expression
+      ; :facial-expression facial-expression
       :score (calc-score facial-expression)
       :time time
       }

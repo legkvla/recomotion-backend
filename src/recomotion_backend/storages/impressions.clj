@@ -35,7 +35,7 @@
 
 (defn update-impression [content-id user-id score]
   (if-let [impression (lookup-impression content-id user-id)]
-    (apply-change impressions-storage content-id :set :score score)
+    (apply-change impressions-storage (:id impression) :set :score score)
     (save impressions-storage
       {
         :content-id content-id
