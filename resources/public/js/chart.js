@@ -7,7 +7,7 @@ function range(start, end) {
 };
 
 $( document ).ready(function() {
-  $.get( "/api/content/c1/stats", function( d ) {
+  $.get( "/api/content/be85f2259ba9726f209bee5fa6db700b/stats", function( d ) {
     console.log(d);
     new Chart(document.getElementById("line-chart"), {
       type: 'line',
