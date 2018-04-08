@@ -12,6 +12,7 @@
     [recomotion-backend.storages.events :as events]
 
     [recomotion-backend.recommendations :as recommendations]
+    [recomotion-backend.web.templates.dashboard :as dashboard]
     )
   )
 
@@ -39,6 +40,11 @@
       )
     (GET "/recommendations/:user-id" {:keys [params]}
       (recommendations/recommendations (:user-id params))
+      )
+    )
+  (context "/site" []
+    (GET "/dashboard" []
+      (dashboard/dashboard)
       )
     )
   )

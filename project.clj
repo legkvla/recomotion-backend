@@ -16,6 +16,7 @@
     [buddy "1.3.0"]
     [buddy/buddy-auth "1.4.1"]
     [com.novemberain/monger "3.1.0"]
+    [hiccup "1.0.5"]
     [environ "1.0.0"]
     [org.clojure/tools.trace "0.7.9"]
     ]
