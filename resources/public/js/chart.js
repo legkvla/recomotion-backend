@@ -25,6 +25,14 @@ function queryEvents() {
         title: {
           display: true,
           text: 'Где смешно'
+        },
+        scales: {
+           yAxes: [{
+               ticks: {
+                   suggestedMin: 0,
+                   suggestedMax: 100
+               }
+           }]
         }
       }
     });
