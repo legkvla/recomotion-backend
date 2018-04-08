@@ -30,6 +30,7 @@
    (include-css "https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css")
    (include-js "https://code.jquery.com/jquery-3.2.1.min.js")
    (include-js "https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
+   (include-js "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js")
    ]
   )
 
@@ -67,5 +68,9 @@
     [:div.col-md-offset-3
       [:iframe {:width 720 :height 405 :src "//rutube.ru/play/embed/7848616"}]
       ]
+    [:div.col-md-12
+      [:canvas#line-chart {:width 800 :height 450}]
+      ]
     )
+  (include-js "/public/js/chart.js")  
   )

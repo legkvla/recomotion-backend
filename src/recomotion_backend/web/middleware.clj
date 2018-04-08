@@ -5,6 +5,8 @@
             [ring.middleware.cookies :refer [wrap-cookies]]
             [ring.logger :as logger]
             [ring.middleware.reload :refer [wrap-reload]]
+            [ring.middleware.file-info :refer [wrap-file-info]]
+            [ring.middleware.file :refer [wrap-file]]
 
             ; [buddy.auth.backends.token :refer [token-backend]]
             ; [buddy.auth :refer [authenticated? throw-unauthorized]]
@@ -45,6 +47,8 @@
     logger/wrap-with-logger ;todo this mw adds some garbage in logs
     wrap-dev-middleware
     wrap-client-side-routes
+    (wrap-file "resources")
+    (wrap-file-info)
     ; (wrap-authentication auth-backend)
     ;todo wrap-keyword-params
     )
