@@ -26,6 +26,7 @@ function queryEvents() {
           display: true,
           text: 'Где смешно'
         },
+        animation: false,
         scales: {
            yAxes: [{
                ticks: {
