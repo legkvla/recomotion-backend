@@ -6,7 +6,7 @@ function range(start, end) {
     return foo;
 };
 
-$( document ).ready(function() {
+function queryEvents() {
   $.get( "/api/content/be85f2259ba9726f209bee5fa6db700b/stats", function( d ) {
     console.log(d);
     new Chart(document.getElementById("line-chart"), {
@@ -29,4 +29,9 @@ $( document ).ready(function() {
       }
     });
   });
+};
+
+$( document ).ready(function() {
+    queryEvents();
+    setInterval(queryEvents, 3000);
 });
